@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Country Swing Move Generator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5efe6;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        h1 {
+            color: #6b4226;
+        }
+
+        button {
+            background-color: #6b4226;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #8a5a3b;
+        }
+
+        #result {
+            margin-top: 30px;
+            font-size: 30px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        a {
+            display: block;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Country Swing Move Generator</h1>
+
+    <p>Click the button to get a random dance combo!</p>
+
+    <button onclick="generateMove()">
+        Generate Dance Combo
+    </button>
+
+    <div id="result">
+        Ready to dance?
+    </div>
+
+    <a href="index.html">Back to Home Page</a>
+
+    <script>
+        const moves = [
+            "Spin",
+            "Pretzel",
+            "Hammerlock",
+            "Cuddle",
+            "Free Spin",
+            "Behind-the-Back Pass",
+            "Dip",
+            "Barrel Roll",
+            "Sweetheart",
+            "Wrap",
+            "Revolver",
+            "Princess Dip",
+            "Anchor Dip",
+            "Cuddle to Ringer",
+            "Baseball Throw",
+            "Tabletop"
+        ];
+
+        function generateMove() {
+            let movesCopy = [...moves]; // copy so we don’t modify original list
+            let combo = [];
+
+            for (let i = 0; i < 3; i++) {
+                let randomIndex = Math.floor(Math.random() * movesCopy.length);
+                combo.push(movesCopy[randomIndex]);
+                movesCopy.splice(randomIndex, 1); // removes used move
+            }
+
+            document.getElementById("result").innerHTML =
+                combo.join(" → ");
+        }
+    </script>
+
+</body>
+</html>
